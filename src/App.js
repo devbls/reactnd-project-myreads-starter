@@ -12,6 +12,8 @@ export default function BooksApp() {
     const response = await getAll();
 
     setBooks(response);
+
+    return response;
   }
 
   async function updateBooks(book, shelf) {

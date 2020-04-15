@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 export default function BookShelfs({ books, handleChange }) {
@@ -23,7 +24,11 @@ export default function BookShelfs({ books, handleChange }) {
                             style={{
                               width: 128,
                               height: 193,
-                              backgroundImage: `url(${book.imageLinks.smallThumbnail})`,
+                              backgroundImage: `url(${
+                                book.imageLinks === undefined
+                                  ? null
+                                  : book.imageLinks.smallThumbnail
+                              })`,
                             }}
                           />
                           <div className="book-shelf-changer">
@@ -47,7 +52,7 @@ export default function BookShelfs({ books, handleChange }) {
                         </div>
                         <div className="book-title">{book.title}</div>
                         <div className="book-authors">
-                          {book.authors.join(', ')}
+                          {book.authors ? book.authors.join(', ') : ''}
                         </div>
                       </div>
                     </li>
